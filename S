@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Lux Empire — All-in-one</title>
+  <meta name="description" content="Single-file Lux Empire site with shop, product pages, cart and contact.">
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Lux Empire — Growth Packs for Creators" />
+  <meta property="og:description" content="Curated caption formulas, trending sounds and posting templates to help creators grow." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1400&q=80" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <style>
+    :root{
+      --bg:#000;
+      --card:#0f0f10;
+      --gold:#d4af37;
+      --muted:#bdbdbd;
+      --glass: rgba(255,255,255,0.03);
+      --radius:14px;
+      --accent: linear-gradient(90deg, rgba(212,175,55,0.95), rgba(255,215,130,0.7));
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: radial-gradient(1200px 400px at 10% 10%, rgba(212,175,55,0.05), transparent),
+                  radial-gradient(800px 300px at 90% 80%, rgba(212,175,55,0.03), transparent),
+                  var(--bg);
+      color:#fff;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.4;
+      padding-bottom:60px;
+    }
+
+  .container{max-width:1100px;margin:0 auto;padding:28px}
+  body{font-size:16px}
+
+    /* Header / hero */
+    .hero{
+      display:flex;
+      gap:20px;
+      align-items:center;
+      padding:36px;
+      border-radius:18px;
+      margin-top:18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(212,175,55,0.08);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+    }
+
+    .logo-wrap{flex:0 0 120px;display:flex;align-items:center;justify-content:center}
+    .logo{
+      width:96px;height:96px;border-radius:50%;
+      background: radial-gradient(circle at 30% 35%, #fff2, transparent),
+                  conic-gradient(from 200deg, rgba(212,175,55,1), rgba(255,215,130,0.5));
+      display:flex;align-items:center;justify-content:center;font-weight:800;color:#000;
+      box-shadow: 0 6px 22px rgba(212,175,55,0.08), 0 2px 6px rgba(0,0,0,0.6);
+      border:3px solid rgba(212,175,55,0.95);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      letter-spacing:2px;font-size:22px
+    }
+
+    .hero h1{margin:0;font-size:24px}
+    .sub{color:var(--muted);margin-top:6px}
+
+    .hero-cta{margin-left:auto;text-align:right}
+    .small-badge{background:rgba(212,175,55,0.12);color:var(--gold);padding:8px 12px;border-radius:999px;font-weight:700}
+
+    /* Products */
+    .products{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-top:24px}
+    .product{
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.015));
+      border-radius:var(--radius);padding:18px;border:1px solid rgba(212,175,55,0.06);
+      box-shadow: 0 6px 24px rgba(0,0,0,0.5);
+      position:relative;overflow:hidden
+    }
+    .product .badge{position:absolute;top:14px;left:14px;background:var(--gold);color:#000;padding:6px 10px;border-radius:8px;font-weight:700;font-size:13px}
+    .product h3{margin:10px 0 6px}
+    .desc{color:var(--muted);font-size:14px;margin-bottom:12px}
+    .features{list-style:none;padding:0;margin:0 0 12px 0;display:flex;flex-wrap:wrap;gap:8px}
+    .features li{background:var(--glass);padding:6px 8px;border-radius:8px;font-size:13px;color:var(--muted)}
+
+    .price{font-size:18px;margin-bottom:10px}
+    .price .old{color:#9a9a9a;text-decoration:line-through;margin-right:8px;font-size:14px}
+    .price .sale{color:var(--gold);font-weight:800}
+
+    .buy-row{display:flex;gap:10px;align-items:center}
+    .buy-btn{background:var(--gold);color:#000;padding:10px 12px;border-radius:10px;border:none;font-weight:800;cursor:pointer;text-decoration:none}
+    .ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);padding:8px 10px;border-radius:10px;cursor:pointer}
+
+    /* Why & how */
+    .meta{display:grid;grid-template-columns:1fr 320px;gap:18px;margin-top:26px}
+    .why{background:transparent;padding:18px;border-radius:14px}
+    .why h4{margin-top:0}
+    .bullets{display:grid;gap:10px}
+    .bullets li{background:rgba(255,255,255,0.02);padding:10px;border-radius:10px;color:var(--muted);font-size:14px}
+
+    .secure{background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);padding:14px;border-radius:12px;border:1px solid rgba(212,175,55,0.05)}
+    .secure p{margin:6px 0;color:var(--muted);font-size:14px}
+
+    footer{margin-top:28px;text-align:center;color:#858585;font-size:13px}
+
+    /* Modal */
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,0.65);display:flex;align-items:center;justify-content:center;z-index:60;display:none}
+    .modal.open{display:flex}
+    .modal-card{background:#081018;padding:20px;border-radius:12px;max-width:720px;width:100%;border:1px solid rgba(212,175,55,0.06)}
+    .modal-card h3{margin:0}
+    .download-list{margin-top:12px;display:flex;flex-direction:column;gap:8px}
+    .download-list a{display:inline-block;padding:8px 10px;border-radius:8px;background:rgba(255,255,255,0.02);color:var(--muted);text-decoration:none}
+
+    @media (max-width:720px){.meta{grid-template-columns:1fr} .hero{flex-direction:column;align-items:flex-start}}
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header style="display:flex;align-items:center;gap:16px;margin-bottom:12px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div class="logo" style="width:56px;height:56px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;color:#000;background:conic-gradient(from 200deg,#d4af37,#ffd);"></div>
+        <div>
+          <strong>Lux Empire</strong><br/><small style="color:var(--muted)">Growth packs for creators</small>
+        </div>
+      </div>
+      <nav style="margin-left:auto;display:flex;gap:10px;align-items:center">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#shop" class="nav-link">Shop</a>
+        <a href="#info" class="nav-link">How it works</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <a href="#cart" class="nav-link" id="cartCountLink">Cart (<span id="cartCount">0</span>)</a>
+      </nav>
+    </header>
+
+    <!-- Views: only one visible at a time -->
+    <main>
+
+      <section id="view-home" class="view">
+        <div class="hero" role="banner">
+          <div class="logo-wrap">
+            <div class="logo" aria-hidden="true">
+            </div>
+          </div>
+          <div>
+            <h1>Lux Empire — Curated Growth Assets for Creators</h1>
+            <div class="sub">Professional caption formulas, tested sound packs, and time‑boxed posting templates crafted to increase views and conversions.</div>
+            <p style="margin-top:8px;color:var(--muted);font-size:14px;max-width:520px">Every pack is curated by creators who have scaled multiple accounts to 100k+ followers. Files are delivered instantly after purchase and include clear usage notes so you can implement strategies in under 30 minutes.</p>
+          </div>
+          <div class="hero-cta">
+            <div class="small-badge">Trusted Seller</div>
+            <div style="height:8px"></div>
+            <div style="color:var(--muted);font-size:13px">30‑day money‑back • Secure delivery • Live support</div>
+            <div style="margin-top:10px">
+              <a href="#shop" class="buy-btn" style="padding:8px 12px;display:inline-block;margin-left:8px">Shop Packs</a>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:20px">
+          <h3 style="margin-bottom:8px">Featured Packs</h3>
+          <div id="home-products" class="products"></div>
+        </div>
+      </section>
+
+      <section id="view-shop" class="view" style="display:none">
+        <h2>Shop — All packs</h2>
+        <div id="shop-products" class="products"></div>
+      </section>
+
+      <!-- Pack detail views (will be populated dynamically) -->
+      <section id="view-pack" class="view" style="display:none">
+        <div id="pack-detail"></div>
+      </section>
+
+      <section id="view-cart" class="view" style="display:none">
+        <h2>Your cart</h2>
+        <div id="cart-root"></div>
+      </section>
+
+      <section id="view-contact" class="view" style="display:none">
+        <h2>Contact</h2>
+        <form id="contactForm">
+          <div style="display:flex;flex-direction:column;gap:8px;max-width:480px">
+            <input placeholder="Your name" name="name" />
+            <input placeholder="Email" name="email" />
+            <input placeholder="Order ref (optional)" id="contactOrderRef" name="orderRef" />
+            <textarea placeholder="Message" name="message" rows="6"></textarea>
+            <button type="submit" class="buy-btn">Send</button>
+          </div>
+        </form>
+      </section>
+
+      <section id="view-info" class="view" style="display:none">
+        <h2>How it works</h2>
+        <p style="color:var(--muted);max-width:720px">Buy a pack, the site creates an internal order and redirects you to PayPal. After PayPal confirms the payment the server receives a notification and marks the order as paid. The seller (admin) then uploads the ZIP file for that order (via the admin UI or curl). Once the file is attached the buyer will be redirected to a secure download page.</p>
+        <h4 style="margin-top:12px">Seller (admin) steps</h4>
+        <ol style="color:var(--muted)">
+          <li>Run the delivery server (see README) and expose it publicly (ngrok or host).</li>
+          <li>After an order is created on /create-order, upload the ZIP for that order at <code>/admin</code> or POST to <code>/admin/upload</code> with your admin key.</li>
+        </ol>
+        <h4 style="margin-top:8px">Buyer experience</h4>
+        <ol style="color:var(--muted)">
+          <li>Click Buy — the site creates an internal order and sends you to PayPal.</li>
+          <li>After payment, PayPal redirects you back to the server; the page will poll for order status and automatically redirect to the download once the seller uploads the file.</li>
+        </ol>
+      </section>
+
+      <section id="view-thanks" class="view" style="display:none">
+        <h2>Thanks</h2>
+        <p>Thanks for reaching out — we'll reply to your message soon.</p>
+      </section>
+
+    </main>
+  <!-- consolidated single-file app script follows -->
+  <script>
+    // Single-file site JS: routing, data, cart
+    const PACKS = {
+      premium: {id:'premium', title:'Premium Pack', price:12.00, priceText:'$12.00', hosted:'ZKP9LBSKVERGC', files:['Premium_Captions.txt','Premium_Sounds_List.txt','Premium_Posting_Calendar.pdf'], desc:'All‑in‑one professional viral pack: curated trending sounds, high‑impact caption formulas and a step‑by‑step posting checklist to maximize reach.'},
+      creator: {id:'creator', title:'Creator Pack', price:8.00, priceText:'$8.00', hosted:'Q7XWUDUGJXPEN', files:['Creator_Captions.txt','Creator_Hashtags.txt'], desc:'A practical toolkit for daily creators — concise captions, headline hooks and a 7‑day posting plan.'},
+  starter: {id:'starter', title:'Starter Pack', price:6.99, priceText:'$6.99', hosted:'TK9BJV9NR4A6L', files:['Starter_Captions.txt','Starter_QuickHooks.txt'], desc:'A focused starter bundle that gives new creators immediate caption templates and sound suggestions.'},
+      mini: {id:'mini', title:'Mini Pack', price:3.99, priceText:'$3.99', hosted:'SQZGYEPP6GEEN', files:['Mini_Captions.txt'], desc:'An entry-level sample pack with ready-to-post captions and a mini posting schedule.'}
+    };
+
+    // cart in localStorage under 'lux_cart'
+    function readCart(){ try{ return JSON.parse(localStorage.getItem('lux_cart')||'[]'); }catch(e){ return []; } }
+    function saveCart(cart){ localStorage.setItem('lux_cart', JSON.stringify(cart)); updateCartCount(); }
+    function updateCartCount(){ const c = readCart().reduce((s,i)=>s+i.qty,0); document.getElementById('cartCount').textContent = c; }
+
+    // Helper: determine server base URL. If page is opened via file:// or origin is null, try stored value or prompt.
+    function getServerBase(){
+      try{
+        if(location.origin && location.origin !== 'null') return location.origin;
+      }catch(e){}
+      const stored = localStorage.getItem('serverBase');
+      if(stored) return stored;
+      const val = prompt('Enter the server base URL (e.g. https://abcd.ngrok.io) so purchases can be processed:');
+      if(val){ localStorage.setItem('serverBase', val); return val; }
+      return null;
+    }
+
+    // Render product card html
+    function renderCard(p){ return `
+      <article class="product" data-id="${p.id}">
+        <div style="width:100%;height:160px;overflow:hidden;border-radius:12px;margin-bottom:10px">
+          <img src="images/${'pack'+(Object.keys(PACKS).indexOf(p.id)+1)}.jpg" alt="${p.title}" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80';" style="width:100%;height:100%;object-fit:cover;display:block"/>
+        </div>
+        <div class="badge">${p.id==='creator'?'Best Seller':'40% OFF'}</div>
+        <h3>${p.title}</h3>
+        <p class="desc">${p.desc}</p>
+        <ul class="features">
+          <li>Captions</li>
+          <li>Trending sounds</li>
+          <li>Posting templates</li>
+        </ul>
+        <div class="price"><span class="old">$${(p.price*1.66).toFixed(2)}</span> <span class="sale">${p.priceText}</span></div>
+        <div class="buy-row">
+          <a href="#pack/${p.id}" class="buy-btn-link">View Pack</a>
+        </div>
+      </article>` }
+
+  function renderProductsList(targetId){ const el = document.getElementById(targetId); el.innerHTML = Object.values(PACKS).map(renderCard).join(''); }
+
+  // Debug overlay
+  function ensureDebugPanel(){ if(document.getElementById('debugPanel')) return; const d = document.createElement('div'); d.id='debugPanel'; d.style.position='fixed'; d.style.right='12px'; d.style.bottom='12px'; d.style.background='rgba(0,0,0,0.6)'; d.style.color='#fff'; d.style.padding='8px 12px'; d.style.borderRadius='8px'; d.style.fontSize='12px'; d.style.zIndex=9999; d.innerHTML = '<strong>Debug</strong><div id="debugLastUrl">last:</div><div id="debugLastError"></div>'; document.body.appendChild(d); }
+  function setDebug(url, err){ ensureDebugPanel(); document.getElementById('debugLastUrl').textContent = 'last: ' + (url||''); document.getElementById('debugLastError').textContent = err ? ('err: ' + err) : ''; }
+
+  // ...preview removed
+
+    // Pack detail render
+    function showPack(id){ const p = PACKS[id]; if(!p) { navigate('shop'); return; }
+      const el = document.getElementById('pack-detail');
+      el.innerHTML = `
+        <div style="display:grid;grid-template-columns:1fr 360px;gap:18px">
+          <div>
+            <div style="height:300px;border-radius:12px;overflow:hidden;margin-bottom:12px"><img src="images/${'pack'+(Object.keys(PACKS).indexOf(p.id)+1)}.jpg" style="width:100%;height:100%;object-fit:cover" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80'"/></div>
+            <h2>${p.title}</h2>
+            <p style="color:var(--muted)">${p.desc}</p>
+            <h4>What's inside</h4>
+            <ul>${p.files.map(f=>`<li>${f}</li>`).join('')}</ul>
+          </div>
+          <aside style="position:relative">
+            <div style="background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:14px;border-radius:12px;border:1px solid rgba(212,175,55,0.06)">
+              <div style="font-size:13px;color:var(--muted)">Price</div>
+              <div style="font-weight:800;font-size:22px;margin:8px 0">${p.priceText}</div>
+              <div style="display:flex;gap:8px;align-items:center">
+                <input id="qtyInput" type="number" min="1" value="1" style="width:80px;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:#fff" />
+                <button id="addToCart" class="buy-btn">Add to cart</button>
+              </div>
+              <div style="margin-top:10px">Or pay now:</div>
+              <div style="margin-top:8px"><button id="demoBtn" type="button" class="ghost">Demo</button></div>
+              <div style="margin-top:8px">
+                <button id="buyBtn" class="buy-btn">Buy on PayPal</button>
+              </div>
+            </div>
+          </aside>
+        </div>`;
+      // wire add to cart and qty -> paypal qty
+      document.getElementById('qtyInput').addEventListener('input', e=>{ const v = Math.max(1,parseInt(e.target.value)||1); document.getElementById('paypalQty').value = v; });
+      document.getElementById('addToCart').addEventListener('click', ()=>{ const q = Math.max(1,parseInt(document.getElementById('qtyInput').value)||1); const cart = readCart(); const existing = cart.find(x=>x.id===p.id); if(existing){ existing.qty += q } else { cart.push({id:p.id,title:p.title,price:p.price,qty:q,hosted:p.hosted}) } saveCart(cart); navigate('cart'); });
+
+      // Demo button opens the external page with drive links
+      document.getElementById('demoBtn').addEventListener('click', ()=>{
+  const base = getServerBase() || ''; const url = (base? base.replace(/\/$/,'') + '/external?demo=1' : 'https://drive.google.com/file/d/1LtKQN3PI_fXKEHgwLFDAB6sQ4AG63Ufi/view?usp=drive_link');
+  window.location.href = url;
+      });
+
+      // Premium-only quick test button (visible only when viewing the Premium pack)
+      if(p.id === 'premium'){
+        try{
+          const demoBtnEl = document.getElementById('demoBtn');
+          const testBtn = document.createElement('button');
+          testBtn.className = 'ghost';
+          testBtn.textContent = 'Test Redirect';
+          testBtn.style.marginLeft = '8px';
+          demoBtnEl.parentNode.insertBefore(testBtn, demoBtnEl.nextSibling);
+          testBtn.addEventListener('click', ()=>{
+            const base = getServerBase() || '';
+            const url = (base? base.replace(/\/$/,'') + '/external?demo=1' : 'https://drive.google.com/file/d/1LtKQN3PI_fXKEHgwLFDAB6sQ4AG63Ufi/view?usp=drive_link');
+            window.location.href = url;
+          });
+        }catch(e){ console.warn('Could not add premium test button', e); }
+      }
+
+      // Unified buy handler used for pack and cart fallback
+      async function handleBuyPack(hostedId, qty){
+        // attempt to create order on server, then submit PayPal form
+        const base = getServerBase();
+        const submitPayPal = (custom, notify, ret) => {
+          const form = document.createElement('form'); form.method='post'; form.action='https://www.paypal.com/cgi-bin/webscr'; form.target='_top';
+          form.innerHTML = `<input type="hidden" name="cmd" value="_s-xclick"/>`;
+          form.innerHTML += `<input type="hidden" name="hosted_button_id" value="${hostedId}"/>`;
+          form.innerHTML += `<input type="hidden" name="currency_code" value="USD"/>`;
+          form.innerHTML += `<input type="hidden" name="quantity" value="${qty}"/>`;
+          if(custom) form.innerHTML += `<input type="hidden" name="custom" value="${custom}"/>`;
+          if(notify) form.innerHTML += `<input type="hidden" name="notify_url" value="${notify}"/>`;
+          if(ret) form.innerHTML += `<input type="hidden" name="return" value="${ret}"/>`;
+          document.body.appendChild(form); form.submit(); document.body.removeChild(form);
+        };
+
+        if(base){
+          try{
+            const createUrl = base.replace(/\/$/,'') + '/create-order';
+            const resp = await fetch(createUrl, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ items:[{id:p.id,title:p.title,price:p.price,qty}], total: p.price*qty }) });
+            if(resp.ok){ const data = await resp.json(); const orderId = data.orderId; const notify = base.replace(/\/$/,'') + '/ipn'; const ret = base.replace(/\/$/,'') + '/external?order=' + encodeURIComponent(orderId); submitPayPal(orderId, notify, ret); return; }
+          }catch(e){ console.warn('create-order failed, falling back to direct PayPal', e); }
+        }
+        // fallback: submit PayPal without internal order
+        submitPayPal('', '', '');
+      }
+
+      // wire buy button
+      document.getElementById('buyBtn').addEventListener('click', ()=>{ const q = Math.max(1,parseInt(document.getElementById('qtyInput').value)||1); handleBuyPack(p.hosted, q); });
+
+      // When clicking the PayPal form submit, create an order on our server first and set notify/return/custom fields
+      document.getElementById('paypalForm').addEventListener('submit', async function(ev){
+        ev.preventDefault();
+        const qty = Math.max(1,parseInt(document.getElementById('qtyInput').value)||1);
+        try{
+          const base = getServerBase();
+          if(!base){ alert('Server base URL is required to process payments. Please enter your server (ngrok) URL when prompted.'); return; }
+          const createUrl = base.replace(/\/$/, '') + '/create-order';
+          setDebug(createUrl, 'starting');
+          console.log('Creating order at', createUrl);
+          const resp = await fetch(createUrl, { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ items:[{id:p.id,title:p.title,price:p.price,qty}], total: p.price * qty }) });
+          if(!resp.ok){ const text = await resp.text(); console.error('create-order failed', resp.status, text); setDebug(createUrl, resp.status + ' ' + text); alert('Could not create order: ' + resp.status + '\n' + (text||'')); return; }
+          const data = await resp.json();
+          const orderId = data.orderId;
+          // set custom, notify_url and return to our server endpoints
+          const notify = base.replace(/\/$/, '') + '/ipn';
+          const ret = base.replace(/\/$/, '') + '/external?order=' + encodeURIComponent(orderId);
+          document.getElementById('paypalCustom').value = orderId;
+          document.getElementById('paypalNotify').value = notify;
+          document.getElementById('paypalReturn').value = ret;
+          setDebug(createUrl, 'ok: orderId=' + orderId);
+          // finally submit the form to PayPal
+          ev.target.submit();
+        }catch(err){ console.error('Order create failed', err); setDebug(null, err.message || err);
+          // Fallback: submit the PayPal form directly so the buyer still reaches PayPal (server-side order/create will be skipped)
+          try{ console.warn('FALLBACK: submitting PayPal form directly'); setDebug(null,'fallback submit'); ev.target.submit(); }catch(e){ alert('Could not start payment. See console for details.'); }
+        }
+      });
+    }
+
+    // Cart page render
+    function renderCart(){ const root = document.getElementById('cart-root'); const cart = readCart(); if(cart.length===0){ root.innerHTML = '<p>Your cart is empty. <a href="#shop">Browse packs</a></p>'; updateCartCount(); return; }
+      root.innerHTML = `
+        <table style="width:100%;border-collapse:collapse">
+          <thead><tr><th style="text-align:left">Item</th><th>Qty</th><th>Price</th><th></th></tr></thead>
+          <tbody>
+            ${cart.map((it,idx)=>`<tr data-idx="${idx}"><td>${it.title}</td><td><input data-idx="${idx}" class="cart-qty" type="number" min="1" value="${it.qty}" style="width:72px"/></td><td>$${(it.price*it.qty).toFixed(2)}</td><td><button data-remove="${idx}" class="ghost">Remove</button></td></tr>`).join('')}
+          </tbody>
+        </table>
+        <div style="margin-top:12px;font-weight:800">Total: $${cart.reduce((s,i)=>s+i.price*i.qty,0).toFixed(2)}</div>
+        <div style="margin-top:10px">
+          <button id="checkoutAll" class="buy-btn">Checkout all (PayPal cart)</button>
+        </div>
+      `;
+      // bind qty change
+      document.querySelectorAll('.cart-qty').forEach(inp=>{ inp.addEventListener('change', e=>{ const idx = parseInt(e.target.dataset.idx); const v = Math.max(1,parseInt(e.target.value)||1); const c = readCart(); c[idx].qty = v; saveCart(c); renderCart(); }); });
+      document.querySelectorAll('[data-remove]').forEach(b=>{ b.addEventListener('click', e=>{ const idx = parseInt(e.currentTarget.dataset.remove); const c = readCart(); c.splice(idx,1); saveCart(c); renderCart(); }); });
+      document.getElementById('checkoutAll').addEventListener('click', async ()=>{ // build form for PayPal cart upload, but create order on server first
+        const c = readCart();
+        try{
+          const base = getServerBase();
+          if(base){
+            const resp = await fetch(base.replace(/\/$/,'') + '/create-order', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ items:c, total: c.reduce((s,i)=>s+i.price*i.qty,0) }) });
+            if(resp.ok){ const data = await resp.json(); const orderId = data.orderId; const form = document.createElement('form'); form.method='post'; form.action='https://www.paypal.com/cgi-bin/webscr'; form.target='_top'; form.innerHTML = `<input type="hidden" name="cmd" value="_cart"/><input type="hidden" name="upload" value="1"/><input type="hidden" name="currency_code" value="USD"/>`;
+              c.forEach((it,i)=>{ const idx=i+1; form.innerHTML += `<input type="hidden" name="item_name_${idx}" value="${it.title}"/>`; form.innerHTML += `<input type="hidden" name="amount_${idx}" value="${it.price.toFixed(2)}"/>`; form.innerHTML += `<input type="hidden" name="quantity_${idx}" value="${it.qty}"/>`; });
+              form.innerHTML += `<input type="hidden" name="custom" value="${orderId}"/>`; form.innerHTML += `<input type="hidden" name="notify_url" value="${base.replace(/\/$/,'')}/ipn"/>`; form.innerHTML += `<input type="hidden" name="return" value="${base.replace(/\/$/,'')}/external?order=${encodeURIComponent(orderId)}"/>`;
+              form.innerHTML += `<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="Buy Now" style="display:none"/>`;
+              document.body.appendChild(form); form.submit(); document.body.removeChild(form); return; }
+          }
+          // fallback: submit PayPal cart directly without internal order
+          const form = document.createElement('form'); form.method='post'; form.action='https://www.paypal.com/cgi-bin/webscr'; form.target='_top'; form.innerHTML = `<input type="hidden" name="cmd" value="_cart"/><input type="hidden" name="upload" value="1"/><input type="hidden" name="currency_code" value="USD"/>`;
+          c.forEach((it,i)=>{ const idx=i+1; form.innerHTML += `<input type="hidden" name="item_name_${idx}" value="${it.title}"/>`; form.innerHTML += `<input type="hidden" name="amount_${idx}" value="${it.price.toFixed(2)}"/>`; form.innerHTML += `<input type="hidden" name="quantity_${idx}" value="${it.qty}"/>`; });
+          form.innerHTML += `<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="Buy Now" style="display:none"/>`;
+          document.body.appendChild(form); form.submit(); document.body.removeChild(form);
+        }catch(err){ console.error('create order failed', err); alert('Could not start checkout. Try again.'); }
+      });
+      updateCartCount(); }
+
+    // Simple router: hash-based
+    function navigate(hash){ location.hash = '#'+hash; route(); }
+    function route(){ const h = location.hash.replace('#','') || 'home'; // possible: home, shop, cart, pack/<id>, contact, info, thanks
+      document.querySelectorAll('.view').forEach(v=>v.style.display='none');
+      if(h.startsWith('pack/')){ const id = h.split('/')[1]; document.getElementById('view-pack').style.display='block'; showPack(id); }
+      else if(h==='shop'){ document.getElementById('view-shop').style.display='block'; renderProductsList('shop-products'); }
+      else if(h==='cart'){ document.getElementById('view-cart').style.display='block'; renderCart(); }
+      else if(h==='contact'){ document.getElementById('view-contact').style.display='block'; const r = localStorage.getItem('lastOrderRef')||''; document.getElementById('contactOrderRef').value = r; }
+      else if(h==='info'){ document.getElementById('view-info').style.display='block'; }
+      else if(h==='thanks'){ document.getElementById('view-thanks').style.display='block'; }
+      else { document.getElementById('view-home').style.display='block'; renderProductsList('home-products'); }
+    }
+
+    // contact form submit (demo - no external post)
+    document.getElementById('contactForm').addEventListener('submit', e=>{ e.preventDefault(); const f = new FormData(e.target); console.log('Contact form', Object.fromEntries(f.entries())); localStorage.setItem('lastOrderRef', f.get('orderRef')||''); navigate('thanks'); });
+
+    // initial boot
+    updateCartCount(); window.addEventListener('hashchange', route); route();
+  </script>
+</body>
+</html>
